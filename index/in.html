@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo website title</title>
+</head>
+<body>
+    <center>
+        <h1>Demo Website</h1>
+        <p>This is created to test the host for free!</p>
+        
+        <!-- Text box and Search Button -->
+        <input type="text" id="song-input" placeholder="Enter song name..." style="padding: 5px; width: 200px;"><br><br>
+        <button id="search-btn" style="padding: 5px 10px; cursor: pointer;">Search on YouTube by Redirecting</button>
+    </center>
+
+    <script>
+        const songInput = document.getElementById('song-input');
+        const searchBtn = document.getElementById('search-btn');
+
+        function searchYouTube() {
+            const songName = songInput.value.trim();
+            if (songName !== "") {
+                // Creates a valid search link and opens it in a new tab
+                const searchUrl = `https://youtube.com/results?search_query=`+encodeURIComponent(songName);
+                window.open(searchUrl, '_blank');
+            } else {
+                alert("Please enter a song name first!");
+            }
+        }
+
+        // Trigger search on button click
+        searchBtn.addEventListener('click', searchYouTube);
+
+        // Trigger search when pressing the 'Enter' key inside the input box
+        songInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchYouTube();
+            }
+        });
+    </script>
+</body>
+</html>

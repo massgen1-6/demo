@@ -3,42 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo website title</title>
+    <title>Demo Website - YouTube Player</title>
+    <!-- Step out of index/ and look into style/ -->
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
-    <center>
-        <h1>Youtube search</h1>
-        <p>This page will redirect to Youtube when you click a button below!</p>
+    <div class="player-container">
+        <h1>YouTube Player</h1>
+        <p>Enter a song name, video link, or specific video ID to play it right here!</p>
         
-        <!-- Text box and Search Button -->
-        <input type="text" id="song-input" placeholder="Enter song name..." style="padding: 5px; width: 200px;"><br><br>
-        <button id="search-btn" style="padding: 5px 10px; cursor: pointer;">Search on YouTube by Redirecting</button>
-    </center>
+        <div class="input-group">
+            <input type="text" id="song-input" placeholder="Enter song name, link, or ID..." value="https://youtube.com">
+            <button id="search-btn">Play Video</button>
+        </div>
 
-    <script>
-        const songInput = document.getElementById('song-input');
-        const searchBtn = document.getElementById('search-btn');
+        <div class="video-wrapper">
+            <div id="player"></div>
+        </div>
+        
+        <br>
+        <!-- Step out of index/ to hit root demo.html -->
+        <a href="../demo.html" class="back-link">← Go Back Home</a>
+    </div>
 
-        function searchYouTube() {
-            const songName = songInput.value.trim();
-            if (songName !== "") {
-                // Creates a valid search link and opens it in a new tab
-                const searchUrl = `https://youtube.com/results?search_query=`+encodeURIComponent(songName);
-                window.open(searchUrl, '_blank');
-            } else {
-                alert("Please enter a song name first!");
-            }
-        }
-
-        // Trigger search on button click
-        searchBtn.addEventListener('click', searchYouTube);
-
-        // Trigger search when pressing the 'Enter' key inside the input box
-        songInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                searchYouTube();
-            }
-        });
-    </script>
+    <!-- Step out of index/ and look into script/ -->
+    <script src="../script/script.js"></script>
 </body>
 </html>
